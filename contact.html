@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | David Aaron P. Serad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== ESPORTS THEME ===== */
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-pink: #ff00ff;
+            --neon-green: #00ff9d;
+            --dark-bg: #0a0a14;
+            --panel-bg: rgba(20, 20, 40, 0.9);
+            --glow: 0 0 20px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+        
+        body {
+            font-family: 'Orbitron', 'Arial Black', sans-serif;
+            background: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+            max-width: 100vw;
+        }
+        
+        /* Glitch Background Effect */
+        .glitch-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 30%, 
+                rgba(0, 243, 255, 0.03) 50%, 
+                transparent 70%
+            );
+            animation: scan 8s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        
+        /* ===== NAVBAR ===== */
+        .esports-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--neon-blue);
+            box-shadow: var(--glow) var(--neon-blue);
+            z-index: 1000;
+        }
+        
+        .gamertag {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .back-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .back-btn:hover {
+            background: var(--neon-green);
+            color: black;
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+        
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            padding: 120px 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+        
+        /* ===== CONTACT CONTAINER ===== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        /* Contact Info Cards */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .info-card {
+            background: rgba(30, 30, 60, 0.8);
+            border-radius: 15px;
+            padding: 25px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .info-card:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.3);
+            transform: translateX(10px);
+        }
+        
+        .info-icon {
+            font-size: 2.5rem;
+            color: var(--neon-pink);
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .info-content h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .info-content p {
+            color: #aaa;
+            font-size: 1rem;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .info-content a {
+            color: var(--neon-green);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .info-content a:hover {
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: rgba(30, 30, 60, 0.8);
+            border-radius: 15px;
+            padding: 35px;
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.2);
+        }
+        
+        .form-title {
+            color: var(--neon-green);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: white;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(10, 10, 30, 0.8);
+            border: 2px solid rgba(0, 243, 255, 0.3);
+            border-radius: 8px;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: var(--neon-green);
+            color: black;
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+        
+        /* Social Links */
+        .social-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        .social-title {
+            color: var(--neon-pink);
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(30, 30, 60, 0.8);
+            border: 2px solid var(--neon-blue);
+            border-radius: 50%;
+            color: var(--neon-blue);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            background: var(--neon-blue);
+            color: black;
+            box-shadow: 0 0 20px var(--neon-blue);
+            transform: scale(1.1);
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .esports-nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+            }
+            
+            .gamertag {
+                font-size: 1.3rem;
+            }
+            
+            .main-content {
+                padding: 140px 20px 40px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .info-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Glitch Background Effect -->
+    <div class="glitch-bg"></div>
+    
+    <!-- Navbar -->
+    <nav class="esports-nav">
+        <div class="gamertag">SERAD_DEV</div>
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="page-title">CONTACT / COMMS</h1>
+        <p class="page-subtitle">Let's connect and collaborate</p>
+        
+        <div class="contact-container">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="info-content">
+                        <h3>EMAIL</h3>
+                        <p><a href="mailto:davidzaaron.serad@gmail.com">davidzaaron.serad@gmail.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-phone"></i></div>
+                    <div class="info-content">
+                        <h3>PHONE</h3>
+                        <p>09291282606</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="info-content">
+                        <h3>LOCATION</h3>
+                        <p>Consolacion, Cebu, Philippines</p>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon"><i class="fab fa-github"></i></div>
+                    <div class="info-content">
+                        <h3>GITHUB</h3>
+                        <p><a href="https://github.com/lazyladz" target="_blank">https://github.com/lazyladz</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2 class="form-title">Send Message</h2>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="social-section">
+            <h2 class="social-title">Connect with me</h2>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/david-aaron-serad-5205a6354/" class="social-link" title="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/lazyladz" class="social-link" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://x.com/Lazylad65" class="social-link" title="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.facebook.com/aarondavid.serad" class="social-link" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/davds51/" class="social-link" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link" title="Discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the data to a server
+            // For now, just show a success message
+            alert(`Message sent!\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nThis is a demo. In production, this would send an actual email.`);
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>

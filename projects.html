@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | David Aaron P. Serad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== ESPORTS THEME ===== */
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-pink: #ff00ff;
+            --neon-green: #00ff9d;
+            --dark-bg: #0a0a14;
+            --panel-bg: rgba(20, 20, 40, 0.9);
+            --glow: 0 0 20px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+        
+        body {
+            font-family: 'Orbitron', 'Arial Black', sans-serif;
+            background: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+            max-width: 100vw;
+        }
+        
+        /* Glitch Background Effect */
+        .glitch-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 30%, 
+                rgba(0, 243, 255, 0.03) 50%, 
+                transparent 70%
+            );
+            animation: scan 8s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        
+        /* ===== NAVBAR ===== */
+        .esports-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--neon-blue);
+            box-shadow: var(--glow) var(--neon-blue);
+            z-index: 1000;
+        }
+        
+        .gamertag {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .back-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .back-btn:hover {
+            background: var(--neon-green);
+            color: black;
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+        
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            padding: 120px 40px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+        
+        /* ===== PROJECTS GRID ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .project-card {
+            background: rgba(30, 30, 60, 0.8);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            border-color: var(--neon-blue);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 243, 255, 0.3);
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .project-icon {
+            font-size: 2.5rem;
+            color: var(--neon-pink);
+        }
+        
+        .project-status {
+            background: var(--neon-green);
+            color: black;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .project-card h3 {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+        
+        .project-desc {
+            color: #bbb;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            font-family: 'Arial', sans-serif;
+            min-height: 80px;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .tech-tag {
+            background: rgba(0, 243, 255, 0.2);
+            color: var(--neon-blue);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid var(--neon-blue);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-link {
+            flex: 1;
+            text-align: center;
+            padding: 12px 20px;
+            background: transparent;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+        }
+        
+        .project-link:hover {
+            background: var(--neon-green);
+            color: black;
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .esports-nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+            }
+            
+            .gamertag {
+                font-size: 1.3rem;
+            }
+            
+            .main-content {
+                padding: 140px 20px 40px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Glitch Background Effect -->
+    <div class="glitch-bg"></div>
+    
+    <!-- Navbar -->
+    <nav class="esports-nav">
+        <div class="gamertag">SERAD_DEV</div>
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="page-title">MY PROJECTS</h1>
+        <p class="page-subtitle">Here are some of the projects I've worked on</p>
+        
+        <div class="projects-grid">
+            <!-- PROJECT 1 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="project-status">COMPLETED</div>
+                </div>
+                <h3>LaserAlarm</h3>
+                <p class="project-desc">The LaserAlarm uses a laser and sensor to form a tripwire. A break triggers an immediate alarm, cloud logging, and remote alerts via an Android app for real-time monitoring and log access.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Kotlin</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">IOT</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/lazyladz/ELDROID-LaserAlarm" class="project-link"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 2 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="project-status">COMPLETED</div>
+                </div>
+                <h3>StoryLine</h3>
+                <p class="project-desc">StoryLine is a collaborative PHP web app where users can co-write stories, add chapters, and comment. Authors manage their work, while readers can explore stories by genre or popularity and give feedback.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">HTML</span>
+                    <span class="tech-tag">Javascript</span>
+                    <span class="tech-tag">PHP</span>
+                    <span class="tech-tag">Laravel</span>
+                </div>
+                <div class="project-links">
+                    <a href="#" class="project-link"><i class="fas fa-globe"></i> Demo</a>
+                    <a href="https://github.com/lazyladz/StoryLine-PHP" class="project-link"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 3 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="project-status">COMPLETED</div>
+                </div>
+                <h3>MangoTango</h3>
+                <p class="project-desc">MangoTango is a smart pest-monitoring system for mango farmers. It uses AI to detect pests by analyzing images of leaves and fruit. The system provides timely treatment advice, tracks farm activities, sends weather-based alerts, and helps farmers manage infestations early and sustainably.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Kotlin</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">Node.js</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/jeemeowq/MangoTangoMobile" class="project-link"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+
+            <!-- PROJECT 4 -->
+            <div class="project-card">
+                <div class="project-header">
+                    <div class="project-icon"><i class="fas fa-database"></i></div>
+                    <div class="project-status">COMPLETED</div>
+                </div>
+                <h3>MangoTango Backend</h3>
+                <p class="project-desc">The MangoTango backend is a lightweight cloud server focused on data and user management. It stores farmer profiles, pest history, treatment logs, and farm activity data in a secure database. The backend also handles sending weather-based pest alerts and syncing user data across devices, while the machine learning model runs locally on the mobile application.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Javascript</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">NoSQL</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/lazyladz/mangotango-backend" class="project-link"><i class="fab fa-github"></i> Code</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

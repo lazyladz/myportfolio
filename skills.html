@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills | David Aaron P. Serad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== ESPORTS THEME ===== */
+        :root {
+            --neon-blue: #00f3ff;
+            --neon-pink: #ff00ff;
+            --neon-green: #00ff9d;
+            --dark-bg: #0a0a14;
+            --panel-bg: rgba(20, 20, 40, 0.9);
+            --glow: 0 0 20px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+        
+        body {
+            font-family: 'Orbitron', 'Arial Black', sans-serif;
+            background: var(--dark-bg);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+            max-width: 100vw;
+        }
+        
+        /* Glitch Background Effect */
+        .glitch-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 30%, 
+                rgba(0, 243, 255, 0.03) 50%, 
+                transparent 70%
+            );
+            animation: scan 8s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        
+        /* ===== NAVBAR ===== */
+        .esports-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--neon-blue);
+            box-shadow: var(--glow) var(--neon-blue);
+            z-index: 1000;
+        }
+        
+        .gamertag {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .back-btn {
+            padding: 10px 25px;
+            background: transparent;
+            border: 2px solid var(--neon-green);
+            color: var(--neon-green);
+            text-decoration: none;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .back-btn:hover {
+            background: var(--neon-green);
+            color: black;
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+        
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            padding: 120px 40px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .page-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .page-subtitle {
+            text-align: center;
+            color: #aaa;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+        
+        /* ===== SKILLS CONTAINER ===== */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .skill-category {
+            background: rgba(30, 30, 60, 0.8);
+            border-radius: 15px;
+            padding: 35px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 10px 30px rgba(255, 0, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .category-title {
+            color: var(--neon-pink);
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .category-title i {
+            font-size: 1.6rem;
+        }
+        
+        .skill-items {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        
+        .skill-item {
+            display: grid;
+            grid-template-columns: 120px 1fr 55px;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .skill-name {
+            color: white;
+            font-size: 1rem;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .skill-bar {
+            height: 14px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+            border-radius: 10px;
+            transition: width 1s ease;
+            box-shadow: 0 0 10px var(--neon-blue);
+            animation: pulse-glow 2s infinite alternate;
+        }
+        
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 5px var(--neon-blue); }
+            100% { box-shadow: 0 0 15px var(--neon-pink); }
+        }
+        
+        .skill-percent {
+            color: var(--neon-green);
+            font-weight: bold;
+            text-align: right;
+            font-size: 1rem;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .esports-nav {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px 20px;
+            }
+            
+            .gamertag {
+                font-size: 1.3rem;
+            }
+            
+            .main-content {
+                padding: 140px 20px 40px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .skills-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .skill-item {
+                grid-template-columns: 100px 1fr 50px;
+                gap: 10px;
+            }
+            
+            .skill-name {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Glitch Background Effect -->
+    <div class="glitch-bg"></div>
+    
+    <!-- Navbar -->
+    <nav class="esports-nav">
+        <div class="gamertag">SERAD_DEV</div>
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="page-title">DEVELOPER SKILLS</h1>
+        <p class="page-subtitle">My technical skillset and proficiency levels</p>
+        
+        <div class="skills-container">
+            <!-- FRONTEND SKILLS -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <i class="fas fa-laptop-code"></i> FRONTEND
+                </h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <span class="skill-name">HTML5</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">CSS3</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">JavaScript</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">React.js</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                        <span class="skill-percent">75%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Bootstrap</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BACKEND SKILLS -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <i class="fas fa-server"></i> BACKEND
+                </h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <span class="skill-name">Node.js</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                        <span class="skill-percent">70%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Python</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                        <span class="skill-percent">75%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">PHP</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                        <span class="skill-percent">65%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">MySQL</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%"></div>
+                        </div>
+                        <span class="skill-percent">80%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">MongoDB</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                        <span class="skill-percent">70%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TOOLS & OTHER -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <i class="fas fa-tools"></i> TOOLS & OTHER
+                </h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <span class="skill-name">Git/GitHub</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%"></div>
+                        </div>
+                        <span class="skill-percent">85%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Figma</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 70%"></div>
+                        </div>
+                        <span class="skill-percent">70%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Photoshop</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 65%"></div>
+                        </div>
+                        <span class="skill-percent">65%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">VS Code</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%"></div>
+                        </div>
+                        <span class="skill-percent">90%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">WordPress</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 75%"></div>
+                        </div>
+                        <span class="skill-percent">75%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRACTICAL SKILLS -->
+            <div class="skill-category">
+                <h3 class="category-title">
+                    <i class="fas fa-wrench"></i> PRACTICAL SKILLS
+                </h3>
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <span class="skill-name">Baking</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 100%"></div>
+                        </div>
+                        <span class="skill-percent">100%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Welding</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 100%"></div>
+                        </div>
+                        <span class="skill-percent">100%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Cooking</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 100%"></div>
+                        </div>
+                        <span class="skill-percent">100%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Electrical Wiring</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 100%"></div>
+                        </div>
+                        <span class="skill-percent">100%</span>
+                    </div>
+                    <div class="skill-item">
+                        <span class="skill-name">Hardware Troubleshooting</span>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 100%"></div>
+                        </div>
+                        <span class="skill-percent">100%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        // Animate skill bars on page load
+        window.addEventListener('load', function() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
